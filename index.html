@@ -6,7 +6,109 @@
 
 
   <title>Chenming Wu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static_files/style.css">
+  
+  <style>
+    .category-nav {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    
+    .category-nav-container {
+      display: inline-flex;
+      background: #f7fafc;
+      border-radius: 8px;
+      padding: 3px;
+      gap: 3px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    
+    .category-btn {
+      background: transparent;
+      border: none;
+      color: #718096;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    
+    .category-btn:hover {
+      color: #4a5568;
+      background: rgba(255, 255, 255, 0.8);
+    }
+    
+    .category-btn.active {
+      color: #2d3748;
+      background: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-weight: 600;
+    }
+    
+    .category-section {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .category-section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .category-section h3 {
+      display: none;
+    }
+    
+    /* Publication table styling */
+    .category-section table {
+      width: 100% !important;
+      max-width: 800px;
+      margin: 0 auto;
+      border-collapse: separate;
+      border-spacing: 0 12px;
+    }
+    
+    .category-section td:first-child {
+      width: 180px;
+      vertical-align: top;
+      padding-right: 20px;
+      padding-top: 0;
+    }
+    
+    .category-section td:last-child {
+      width: calc(100% - 200px);
+      vertical-align: top;
+      padding-top: 0;
+    }
+    
+    /* Remove top spacing from first element in publication cells */
+    .category-section td:last-child > *:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .category-nav-container {
+        flex-wrap: wrap;
+        gap: 2px;
+      }
+      
+      .category-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+    }
+  </style>
 
   <!-- Google Web Fonts -->
   <script type="text/javascript">
@@ -51,12 +153,11 @@
 
       <div id="intro">
         <p>
-          <br>
-          I am currently working at <a href="http://vis.baidu.com/">Baidu Inc.</a>. We are actively looking for interns
+          I am currently working at <a href="http://vis.baidu.com/">Baidu Inc</a>. We are actively looking for interns
           to work on 3D AIGC and Reconstruction, please
           <a href="mailto: wcm94@live.com">send me
             an email</a> if you are interested. I previously worked at <a href="https://tencent.com">Tencent</a> and
-          interned at <a href="https://aifi.com">AiFi Inc.</a>. I
+          interned at <a href="https://aifi.com">AiFi Inc</a>. I
           received my
           Ph.D. degree from Graphics and Geometric Computing Group, Department of Computer Science and Technology,
           Tsinghua University in 2020. I visited the Graphics and Imaging Lab, Paul G. Allen School of Computer Science
@@ -71,824 +172,693 @@
 
     <div class="line"></div>
     <div id="publications">
-      <p class="subsection">Selected Publication</p>
-      <table width="800" border="0" cellspacing="10" align="center">
-        <tbody>
+      <p class="subsection">Selected Publications</p>
+      <!-- Category Navigation -->
+      <div class="category-nav">
+        <div class="category-nav-container">
+          <button onclick="toggleCategory('recent')" class="category-btn" id="btn-recent">Recent</button>
+          <button onclick="toggleCategory('computational')" class="category-btn" id="btn-computational">Design & Fab</button>
+          <button onclick="toggleCategory('vision')" class="category-btn" id="btn-vision">Vision & Learning</button>
+          <button onclick="toggleCategory('robotics')" class="category-btn" id="btn-robotics">Robotics</button>
+        </div>
+      </div>
 
-          
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/gs-ia.png" width="200" height="120" align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Surfel-based Gaussian Inverse Rendering for Fast and Relightable Dynamic Human
-                Reconstruction from Monocular Videos</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2407.15212">pdf</a>]</div>
-
-              <div class="links">[<a href="https://gs-ia.github.io/">project page</a>]
-              </div>
-              <p class="authors">
-                Yiqun Zhao, <b>Chenming Wu</b>, Binbin Huang, Yihao Zhi, Chen Zhao, Jingdong Wang, Shenghua Gao
-              </p>
-              <div class="conf">
-                IEEE Transactions on Pattern Analysis and Machine Intelligence (PAMI), 2025
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/gir.png" width="200" height="120" align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> GIR: 3D Gaussian Inverse Rendering for Relightable Scene Factorization</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2312.05133">pdf</a>]</div>
-
-              <div class="links">[<a href="https://3dgir.github.io/">project page</a>]
-              </div>
-              <p class="authors">
-                Yahao Shi, Yanmin Wu, <b>Chenming Wu*</b>, Xing Liu, Chen Zhao, Haocheng Feng, Jian Zhang, Bin Zhou, Errui Ding, Jingdong Wang
-              </p>
-              <div class="conf">
-                IEEE Transactions on Pattern Analysis and Machine Intelligence (PAMI), 2025
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/TexGaussian.jpg" width="200" height="120" align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> TexGaussian: Generating High-quality PBR Material via Octree-based 3D Gaussian Splatting</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2411.19654">pdf</a>]</div>
-
-              <div class="links">[<a href="https://3d-aigc.github.io/TexGaussian/">project page</a>]
-              </div>
-              <p class="authors">
-                Bojun Xiong, Jialun Liu, Jiakui Hu, <b>Chenming Wu</b>, Jinbo Wu, Xing Liu, Chen Zhao, Errui Ding, Zhouhui Lian 
-              </p>
-              <div class="conf">
-                IEEE/CVF International Conference on Computer Vision and Pattern Recognition (CVPR), 2025
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/splatter360.png" width="200" height="120" align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Splatter-360: Generalizable 360 Gaussian Splatting for Wide-baseline Panoramic Images</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2412.06250">pdf</a>]</div>
-
-              <div class="links">[<a href="https://3d-aigc.github.io/Splatter-360/">project page</a>]
-              </div>
-              <p class="authors">
-                Zheng Chen^, <b>Chenming Wu</b>^, Zhelun Shen, Chen Zhao, Weicai Ye, Haocheng Feng, Errui Ding, Song-Hai Zhang 
-              </p>
-              <div class="conf">
-                IEEE/CVF International Conference on Computer Vision and Pattern Recognition (CVPR), 2025
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/vdg.png" width="200" height="120" align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> VDG: Vision-Only Dynamic Gaussian for Driving Simulation</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2406.18198">pdf</a>]</div>
-
-              <div class="links">[<a href="https://3d-aigc.github.io/VDG/">project page</a>]
-              </div>
-              <p class="authors">
-                Hao Li, Jingfeng Li, Dingwen Zhang, <b>Chenming Wu*</b>, Jieqi Shi, Chen Zhao, Haocheng Feng, Errui Ding,
-                Jingdong Wang, Junwei Han
-              </p>
-              <div class="conf">
-                IEEE Robotics and Automation Letters (RA-L), 2025
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/gaussian-lic.png" width="200" height="120" align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Gaussian-LIC: Real-Time Photo-Realistic SLAM with Gaussian Splatting and LiDAR-Inertial-Camera Fusion</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2404.06926">pdf</a>]</div>
-
-              <div class="links">[<a href="https://xingxingzuo.github.io/gaussian_lic/">project page</a>]
-              </div>
-              <p class="authors">
-                Xiaolei Lang, Laijian Li, <b>Chenming Wu</b>, Chen Zhao, Lina Liu, Yong Liu, Jiajun Lv, Xingxing Zuo
-              </p>
-              <div class="conf">
-                IEEE International Conference on Robotics and Automation (ICRA), 2025
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/dgtr.png" width="200" height="120" align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> DGTR: Distributed Gaussian Turbo-Reconstruction for Sparse-View Vast Scenes</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2411.12309">pdf</a>]</div>
-
-              <div class="links">[<a href="https://3d-aigc.github.io/DGTR/">project page</a>]
-              </div>
-              <p class="authors">
-                Hao Li, Yuanyuan Gao, Haosong Peng, <b>Chenming Wu</b>, Weicai Ye,
-Yufeng Zhan, Chen Zhao,  Dingwen Zhang, Jingdong Wang, Junwei Han
-              </p>
-              <div class="conf">
-                IEEE International Conference on Robotics and Automation (ICRA), 2025
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <!-- 
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/gva.png" width="200" height="120" align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> GVA: Reconstructing Vivid 3D Gaussian Avatars from Monocular Videos</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2402.16607.pdf">pdf</a>]</div>
-
-              <div class="links">[<a href="https://3d-aigc.github.io/GVA/">project page</a>]
-              </div>
-              <p class="authors">
-                Xinqi Liu, <b>Chenming Wu</b>, Jialun Liu, Xing Liu, Jinbo Wu, Chen Zhao, Haocheng Feng, Errui Ding,
-                Jingdong
-                Wang<br>
-              </p>
-              <div class="conf">
-                Arxiv Preprint
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/texro.png" width="200" height="120" align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> TexRO: Generating Delicate Textures of 3D Models by Recursive Optimization</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2403.15009">pdf</a>]</div>
-
-              <div class="links">[<a href="https://3d-aigc.github.io/TexRO/">project page</a>]
-              </div>
-              <p class="authors">
-                Jinbo Wu, Xing Liu, <b>Chenming Wu</b>, Xiaobo Gao, Jialun Liu, Xinqi Liu, Chen Zhao, Haocheng Feng,
-                Errui
-                Ding, and Jingdong Wang<br>
-              </p>
-              <div class="conf">
-                Arxiv Preprint, 2024
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr> -->
-         
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/xld.png" width="200" height="120" align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> XLD: A Cross-Lane Dataset for Benchmarking Novel Driving View Synthesis</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2406.18360">pdf</a>]</div>
-              <div class="links">[<a href="https://3d-aigc.github.io/XLD/">project page</a>]
-                <div class="links">[<a href="https://github.com/lifuguan/XLD_code">code</a>]
-                </div>
+      <!-- Recent Publications (Top 5 Most Recent) -->
+      <div id="category-recent" class="category-section">
+        <h3>Recent Publications</h3>
+        <table width="800" border="0" cellspacing="10" align="center">
+          <tbody>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/gs-ia.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                <div class="pub_title"> Surfel-based Gaussian Inverse Rendering for Fast and Relightable Dynamic Human
+                  Reconstruction from Monocular Videos</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2407.15212">pdf</a>]</div>
+                <div class="links">[<a href="https://gs-ia.github.io/">project page</a>]</div>
                 <p class="authors">
-                  Hao Li^, <b>Chenming Wu^</b>, Ming Yuan, Yan Zhang, Chen Zhao, Chunyu Song, Haocheng Feng, Errui Ding,
-                  Dingwen Zhang, Jingdong Wang
+                  Yiqun Zhao, <b>Chenming Wu</b>, Binbin Huang, Yihao Zhi, Chen Zhao, Jingdong Wang, Shenghua Gao
                 </p>
                 <div class="conf">
-                  International Conference on 3D Vision (3DV), 2025
-                  <div>
-                  </div>
+                  IEEE Transactions on Pattern Analysis and Machine Intelligence (PAMI), 2025
                 </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/paralane.png" width="200" height="120" align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Para-Lane: Multi-Lane Dataset Registering Parallel Scans for Benchmarking Novel View Synthesis</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2406.18360">pdf</a>]</div>
-              <div class="links">[<a href="https://nizqleo.github.io/paralane-dataset/">project page</a>]
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/gir.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                <div class="pub_title"> GIR: 3D Gaussian Inverse Rendering for Relightable Scene Factorization</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2312.05133">pdf</a>]</div>
+                <div class="links">[<a href="https://3dgir.github.io/">project page</a>]</div>
                 <p class="authors">
-                  Ziqian Ni, Sicong Du, Zhenghua Hou,  <b>Chenming Wu</b>, Sheng Yang
+                  Yahao Shi, Yanmin Wu, <b>Chenming Wu*</b>, Xing Liu, Chen Zhao, Haocheng Feng, Jian Zhang, Bin Zhou, Errui Ding, Jingdong Wang
                 </p>
                 <div class="conf">
-                  International Conference on 3D Vision (3DV), 2025
-                  <div>
-                  </div>
+                  IEEE Transactions on Pattern Analysis and Machine Intelligence (PAMI), 2025
                 </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/neus-pir.png" width="200" height="120" align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> NeuS-PIR: Learning Relightable Neural Surface using Pre-Integrated Rendering</div>
-              <div class="links">[<a href="http://arxiv.org/pdf/2306.07632.pdf">pdf</a>]</div>
-
-              <div class="links">[<a href="https://github.com/Sheldonmao/NeuSPIR">code</a>]
-              </div>
-              <p class="authors">
-                Shi Mao, <b>Chenming Wu*</b>, Zhelun Shen, Yifan Wang, Dayan Wu, Liangjun Zhang
-              </p>
-              <div class="conf">
-                Journal of Computational Visual Media (CVM), 2025
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-
-
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/opengaussian.png" width="200" height="120"
-                align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> OpenGaussian: Towards Point-Level 3D Gaussian-based Open Vocabulary Understanding
-              </div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2406.02058">pdf</a>]</div>
-              <div class="links">[<a href="https://3d-aigc.github.io/OpenGaussian">project page</a>]</div>
-              <div class="links">[<a href="https://github.com/yanmin-wu/OpenGaussian">code</a>]</div>
-              <p class="authors">
-                Yanmin Wu, Jiarui Meng, Haijie Li, <b>Chenming Wu*</b>, Yahao Shi, Xinhua Cheng, Chen Zhao, Haocheng
-                Feng, Errui Ding, Jingdong Wang, Jian Zhang
-              </p>
-              <div class="conf">
-                Advances in Neural Information Processing Systems (NeurIPS), 2024
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          
-
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/ggrt.png" width="200" height="120" align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> GGRt: Towards Pose-free Generalizable 3D Gaussian Splatting in Real-time</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2403.10147.pdf">pdf</a>]</div>
-              <div class="links">[<a href="https://3d-aigc.github.io/GGRt/">project page</a>]</div>
-              <div class="links">[<a href="https://github.com/lifuguan/GGRt_official">code</a>]</div>
-
-              <p class="authors">
-                Hao Li^, Yuanyuan Gao^, <b>Chenming Wu^</b>, Dingwen Zhang, Yalun Dai,
-                Chen Zhao, Haocheng Feng, Errui Ding, Jingdong Wang, Junwei Han<br>
-              </p>
-              <div class="conf">
-                European Conference on Computer Vision (ECCV), 2024
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/ho-gaussian.jpg" width="200" height="120"
-                align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> HO-Gaussian: Hybrid Optimization of 3D Gaussian Splatting for Urban Scenes</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2403.20032.pdf">pdf</a>]</div>
-
-              <p class="authors">
-                Zhuopeng Li, Yilin Zhang, <b>Chenming Wu</b>, Jianke Zhu, Liangjun Zhang<br>
-              </p>
-              <div class="conf">
-                European Conference on Computer Vision (ECCV), 2024
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-
-
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/dgnr_2024.png" width="200" height="120" align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> DGNR: Density-Guided Neural Point Rendering of Large Driving Scenes</div>
-              <div class="links">[<a href="http://arxiv.org/pdf/2311.16664.pdf">pdf</a>]</div>
-
-              <div class="links">[<a href="https://github.com/JOP-Lee/DGNR-Rendering">code</a>]
-              </div>
-              <p class="authors">
-                Zhuopeng Li, <b>Chenming Wu*</b>, Liangjun Zhang, and Jianke Zhu
-              </p>
-              <div class="conf">
-                IEEE Transactions on Automation Science and Engineering (TASE), 2024
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/gauloc.png" width="200" height="120" align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title">GauLoc: 3D Gaussian Splatting‐based Camera Relocalization
-              </div>
-              <div class="links">[<a
-                  href="http://chenming-wu.github.io/pdfs/gauloc_cgf.pdf">pdf</a>]
-              </div>
-              <div class="links">[<a href="https://github.com/xinzhe11/GauLoc">code</a>]
-              </div>
-              <p class="authors">
-                Zhe Xin, Chengkai Dai, Ying Li, <b>Chenming Wu*</b>
-              </p>
-              <div class="conf">
-                Computer Graphics Forum (CGF), 2024
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/iros24.png" width="200" height="120" align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> HPHS: Hierarchical Planning based on Hybrid Frontier Sampling for Unknown
-                Environments
-                Exploration
-              </div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2407.10660">pdf</a>]</div>
-              <div class="links">[<a href="https://github.com/bit-lsj/HPHS">code</a>]
-              </div>
-              <p class="authors">
-                Shijun Long, Ying Li, <b>Chenming Wu</b>, Bin Xu, Wei Fan
-              </p>
-              <div class="conf">
-                IEEE International Conference on Intelligent Robots and Systems (IROS), 2024
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/texoct.png" width="200" height="120" align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> TexOct: Generating Textures of 3D Models with Octree-based Diffusion</div>
-              <div class="links">[<a
-                  href="https://openaccess.thecvf.com/content/CVPR2024/papers/Liu_TexOct_Generating_Textures_of_3D_Models_with_Octree-based_Diffusion_CVPR_2024_paper.pdf">pdf</a>]
-              </div>
-              <p class="authors">
-                Jialun Liu, <b>Chenming Wu*</b>, Xinqi Liu, Xing Liu, Jinbo Wu, Haotian Peng, Chen Zhao, Haocheng Feng,
-                Jingtuo
-                Liu, Errui Ding<br>
-              </p>
-              <div class="conf">
-                IEEE/CVF International Conference on Computer Vision and Pattern Recognition (CVPR), 2024
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/matsparse3d.jpg" width="200" height="120"
-                align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Generating Material-Aware 3D Models from Sparse Views</div>
-              <div class="links">[<a
-                  href="https://openaccess.thecvf.com/content/CVPR2024W/PBDL/papers/Mao_Generating_Material-Aware_3D_Models_from_Sparse_Views_CVPRW_2024_paper.pdf">pdf</a>]
-              </div>
-              <div class="links">[<a href="https://github.com/Sheldonmao/MatSparse3D">code</a>]</div>
-              <p class="authors">
-                Shi Mao, <b>Chenming Wu</b>, Ran Yi, Zhelun Shen, Liangjun Zhang, Wolfgang Heidrich<br>
-              </p>
-              <div class="conf">
-                IEEE/CVF International Conference on Computer Vision and Pattern Recognition (CVPR) Workshop PBDL, 2024
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/icra-lidarcs.png" width="200" height="120"
-                align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> LiDAR-CS Dataset: LiDAR Point Cloud Dataset with Cross-Sensors for 3D Object
-                Detection</div>
-              <div class="links">[<a href="https://opendriving.github.io/lidar-cs/data/paper.pdf">pdf</a>]</div>
-
-              <div class="links">[<a href="https://opendriving.github.io/lidar-cs">project page</a>]
-              </div>
-              <p class="authors">
-                Jin Fang, Dingfu Zhou, Jingjing Zhao, <b>Chenming Wu</b>, Chulin Tang, Cheng-Zhong Xu, Liangjun
-                Zhang<br>
-              </p>
-              <div class="conf">
-                IEEE International Conference on Robotics and Automation (ICRA), 2024
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/icra_hero_slam.png" width="200" height="120"
-                align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> HERO-SLAM: Hybrid Enhanced Robust Optimization of Neural SLAM</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2407.18813">pdf</a>]</div>
-
-              <div class="links">[<a href="https://hero-slam.github.io">project page</a>]
-
-                <div class="links">[<a href="https://github.com/hero-slam/HERO-SLAM">code</a>]
-                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/TexGaussian.jpg" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                <div class="pub_title"> TexGaussian: Generating High-quality PBR Material via Octree-based 3D Gaussian Splatting</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2411.19654">pdf</a>]</div>
+                <div class="links">[<a href="https://3d-aigc.github.io/TexGaussian/">project page</a>]</div>
                 <p class="authors">
-                  Zhe Xin, Yufeng Yue, Liangjun Zhang, <b>Chenming Wu*</b><br>
+                  Bojun Xiong, Jialun Liu, Jiakui Hu, <b>Chenming Wu</b>, Jinbo Wu, Xing Liu, Chen Zhao, Errui Ding, Zhouhui Lian 
                 </p>
                 <div class="conf">
-                  IEEE International Conference on Robotics and Automation (ICRA), 2024
-                  <div>
-                  </div>
+                  IEEE/CVF International Conference on Computer Vision and Pattern Recognition (CVPR), 2025
                 </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/iclr_icl_rep.png" width="200" height="120"
-                align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Understanding In-Context Learning from Repetitions</div>
-              <div class="links">[<a href="https://arxiv.org/pdf/2310.00297.pdf">pdf</a>]</div>
-
-              <div class="links">[<a href="https://github.com/ElliottYan/understand-icl-from-repetition">code</a>]
-              </div>
-              <p class="authors">
-                Jianhao Yan, Jin Xu, Chiyu Song, <b>Chenming Wu</b>, Yafu Li, and Yue Zhang
-              </p>
-              <div class="conf">
-                International Conference on Learning Representations (ICLR), 2024
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/outdoor-nerf-depth.png" width="200" height="120"
-                align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Digging into Depth Priors for Outdoor Neural Radiance Fields</div>
-              <div class="links">[<a href="https://cwchenwang.github.io/outdoor-nerf-depth/data/paper.pdf">pdf</a>]
-              </div>
-              <div class="links">[<a href="https://cwchenwang.github.io/outdoor-nerf-depth/">project page</a>]
-                <div class="links">[<a href="https://github.com/cwchenwang/outdoor-nerf-depth">code</a>]
-                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/splatter360.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                <div class="pub_title"> Splatter-360: Generalizable 360 Gaussian Splatting for Wide-baseline Panoramic Images</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2412.06250">pdf</a>]</div>
+                <div class="links">[<a href="https://3d-aigc.github.io/Splatter-360/">project page</a>]</div>
                 <p class="authors">
-                  Chen Wang, Jiadai Sun, Lina Liu, <b>Chenming Wu*</b>, Zhelun Shen*, Dayan Wu, Yuchao Dai, Liangjun
-                  Zhang
+                  Zheng Chen^, <b>Chenming Wu</b>^, Zhelun Shen, Chen Zhao, Weicai Ye, Haocheng Feng, Errui Ding, Song-Hai Zhang 
                 </p>
                 <div class="conf">
-                  ACM International Conference on Multimedia (MM, Oral), 2023
-                  <div>
-                  </div>
+                  IEEE/CVF International Conference on Computer Vision and Pattern Recognition (CVPR), 2025
                 </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/iros_mapnerf.png" width="200" height="120"
-                align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> MapNeRF: Incorporating Map Priors into Neural Radiance Fields for Driving View
-                Simulation
-              </div>
-              <div class="links">[<a href="http://arxiv.org/pdf/2307.14981.pdf">pdf</a>]</div>
-              <div class="links">[<a href="https://youtu.be/jEQWr-Rfh3A">video</a>]
-              </div>
-              <p class="authors">
-                <b>Chenming Wu</b>, Jiadai Sun, Zhelun Shen, and Liangjun Zhang
-              </p>
-              <div class="conf">
-                IEEE International Conference on Intelligent Robots and Systems (IROS), 2023
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/iros_irl.png" width="200" height="120" align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Boosting Feedback Efficiency of Interactive Reinforcement Learning by Adaptive
-                Learning
-                from Scores</div>
-              <div class="links">[<a href="http://arxiv.org/pdf/2307.05405.pdf">pdf</a>]</div>
-              <div class="links">[<a href="https://github.com/SSKKai/Interactive-Scoring-IRL">code</a>]
-              </div>
-              <p class="authors">
-                Shukai Liu, <b>Chenming Wu*</b>, Ying Li, and Liangjun Zhang
-              </p>
-              <div class="conf">
-                IEEE International Conference on Intelligent Robots and Systems (IROS), 2023
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/bioprinting.png" width="200" height="120"
-                align="left"></td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> A Multi-Axis Robot-based Bioprinting System Supporting Natural Cell Function
-                Preservation
-                and Cardiac Tissue Fabrication</div>
-              <div class="links">[<a href="https://www.sciencedirect.com/science/article/pii/S2452199X22000743">pdf</a>]
-              </div>
-              <div class="links">[<a href="https://www.youtube.com/watch?v=ymoosfEH0aw&feature=youtu.be">video</a>]
-              </div>
-              <p class="authors">
-                Zeyu Zhang^, <b>Chenming Wu^</b>, Chengkai Dai^, Qingqing Shi^, Guoxin Fang, Dongfang Xie, Xiangjie
-                Zhao,
-                Yong-Jin Liu, and Charlie CL Wang, Xiu-Jie Wang
-              </p>
-              <div class="conf">
-                Bioactive Materials (Winner of the MEDTECH prize 2022), 2022
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/emnlp22.png" width="200" height="120" align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Digging Errors in NMT: Evaluating and Understanding Model Errors from Partial
-                Hypothesis
-                Space</div>
-              <div class="links">[<a href="https://aclanthology.org/2022.emnlp-main.827.pdf">pdf</a>]</div>
-              <div class="links">[<a href="https://github.com/ElliottYan/digging_errors_nmt">code</a>]
-              </div>
-              <p class="authors">
-                Jianhao Yan^, <b>Chenming Wu^</b>, Fandong Meng, and Jie Zhou
-              </p>
-              <div class="conf">
-                Empirical Methods in Natural Language Processing (EMNLP), 2022
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/carpentrycompiler.png" width="200" height="120"
-                align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Carpentry Compiler</div>
-              <div class="links">[<a
-                  href="https://homes.cs.washington.edu/~adriana/website/CarpentryCompiler.pdf">pdf</a>]
-              </div>
-              <div class="links">[<a href="https://grail.cs.washington.edu/projects/carpentrycompiler/">project
-                  page</a>]
-              </div>
-              <div class="links">[<a href="https://github.com/helm-compiler">code</a>]
+
+        </tbody>
+      </table>
+      </div>
+
+      <!-- Computational Design/Fab Publications -->
+      <div id="category-computational" class="category-section">
+        <h3>Computational Design & Fabrication</h3>
+        <table width="800" border="0" cellspacing="10" align="center">
+          <tbody>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/carpentrycompiler.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Carpentry Compiler</div>
+                <div class="links">[<a href="https://homes.cs.washington.edu/~adriana/website/CarpentryCompiler.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://grail.cs.washington.edu/projects/carpentrycompiler/">project page</a>]</div>
+                <div class="links">[<a href="https://github.com/helm-compiler">code</a>]</div>
                 <p class="authors">
                   <b>Chenming Wu</b>, Haisen Zhao, Chandrakana Nandi, Jeffrey I Lipton, Zachary Tatlock, Adriana Schulz
                 </p>
                 <div class="conf">
                   ACM Transactions on Graphics (SIGGRAPH Asia), 2019
-                  <div>
-                  </div>
                 </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/ral_ltd.png" width="200" height="120" align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Learning to Accelerate Decomposition for Multi-Directional 3D Printing</div>
-              <div class="links">[<a href="http://arxiv.org/pdf/2004.03450.pdf">pdf</a>]</div>
-              <div class="links">[<a href="https://github.com/chenming-wu/pymdp">code</a>]
-              </div>
-              <p class="authors">
-                <b>Chenming Wu</b>, Yong-Jin Liu, Charlie CL Wang
-              </p>
-              <div class="conf">
-                IEEE Robotics and Automation Letters (RA-L), 2020
-                <div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/ral_ltd.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Learning to Accelerate Decomposition for Multi-Directional 3D Printing</div>
+                <div class="links">[<a href="http://arxiv.org/pdf/2004.03450.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://github.com/chenming-wu/pymdp">code</a>]</div>
+                <p class="authors">
+                  <b>Chenming Wu</b>, Yong-Jin Liu, Charlie CL Wang
+                </p>
+                <div class="conf">
+                  IEEE Robotics and Automation Letters (RA-L), 2020
                 </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/tase_multidir.png" width="200" height="120"
-                align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> General Support-Effective Decomposition for Multi-Directional 3D Printing</div>
-              <div class="links">[<a href="http://arxiv.org/pdf/1812.00606.pdf">pdf</a>]</div>
-              <div class="links">[<a href="https://github.com/chenming-wu/pymdp">code</a>]
-              </div>
-              <p class="authors">
-                <b>Chenming Wu</b>, Chengkai Dai, Guoxin Fang, Yong-Jin Liu, Charlie CL Wang
-              </p>
-              <div class="conf">
-                IEEE Transactions on Automation Science and Engineering (TASE), 2019
-                <div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/tase_multidir.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> General Support-Effective Decomposition for Multi-Directional 3D Printing</div>
+                <div class="links">[<a href="http://arxiv.org/pdf/1812.00606.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://github.com/chenming-wu/pymdp">code</a>]</div>
+                <p class="authors">
+                  <b>Chenming Wu</b>, Chengkai Dai, Guoxin Fang, Yong-Jin Liu, Charlie CL Wang
+                </p>
+                <div class="conf">
+                  IEEE Transactions on Automation Science and Engineering (TASE), 2019
                 </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/ral_multiarm.png" width="200" height="120"
-                align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Plant Phenotyping by Deep-Learning-Based Planner for Multi-Robots</div>
-              <div class="links">[<a href="https://cg.cs.tsinghua.edu.cn/papers/IEEERAL-2019-plant.pdf">pdf</a>]</div>
-              <div class="links">[<a href="https://www.youtube.com/watch?v=XusxgEczHrQ">video</a>]
-              </div>
-              <p class="authors">
-                <b>Chenming Wu</b>, Rui Zeng, Jia Pan, Charlie CL Wang, Yong-Jin Liu
-              </p>
-              <div class="conf">
-                IEEE Robotics and Automation Letters (RA-L), 2019
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/ral_energy.png" width="200" height="120" align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Energy-Efficient Coverage Path Planning for General Terrain Surfaces</div>
-              <div class="links">[<a href="https://cg.cs.tsinghua.edu.cn/papers/IEEERAL-2019-path.pdf">pdf</a>]</div>
-              <p class="authors">
-                <b>Chenming Wu</b>, Chengkai Dai, Xiaoxi Gong, Yong-Jin Liu, Jun Wang, Xianfeng David Gu, and Charlie CL
-                Wang
-              </p>
-              <div class="conf">
-                IEEE Robotics and Automation Letters (RA-L), 2019
-                <div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/SIG18RobotVolPrint.png" width="200" height="120"
-                align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Support-free Volume Printing by Multi-axis Motion</div>
-              <div class="links">[<a href="https://mewangcl.github.io/pubs/SIG18RobotVolPrint.pdf">pdf</a>]</div>
-              <div class="links">[<a href="https://www.youtube.com/watch?v=iaZeTlios0w">video</a>]
-                <div class="links">[<a href="https://github.com/daichengkai/VoxelMultiAxisAM">code</a>]
-                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/SIG18RobotVolPrint.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Support-free Volume Printing by Multi-axis Motion</div>
+                <div class="links">[<a href="https://mewangcl.github.io/pubs/SIG18RobotVolPrint.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://www.youtube.com/watch?v=iaZeTlios0w">video</a>]</div>
+                <div class="links">[<a href="https://github.com/daichengkai/VoxelMultiAxisAM">code</a>]</div>
                 <p class="authors">
                   Chengkai Dai, Charlie CL Wang, <b>Chenming Wu</b>, Sylvain Lefebvre, Guoxin Fang, Yong-Jin Liu
                 </p>
                 <div class="conf">
                   ACM Transactions on Graphics (SIGGRAPH), 2018
-                  <div>
-                  </div>
                 </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/cga_partitioning.png" width="200" height="120"
-                align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Interactive Partitioning of 3D Models into Printable Parts</div>
-              <div class="links">[<a href="https://doi.org/10.1109/MCG.2018.042731658">pdf</a>]</div>
-              <div class="links">[<a
-                  href="https://mewangcl.github.io/pubs/CGAInteractiveChopper_DataSet.zip">dataset</a>]
-              </div>
-              <p class="authors">
-                Aamir Khan Jadoon^, <b>Chenming Wu^</b>, Yong-Jin Liu, Ying He, and Charlie C.L. Wang
-              </p>
-              <div class="conf">
-                IEEE Computer Graphics and Applications (CGA), vol.38, no.4, July/August 2018
-                <div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/cga_partitioning.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Interactive Partitioning of 3D Models into Printable Parts</div>
+                <div class="links">[<a href="https://doi.org/10.1109/MCG.2018.042731658">pdf</a>]</div>
+                <div class="links">[<a href="https://mewangcl.github.io/pubs/CGAInteractiveChopper_DataSet.zip">dataset</a>]</div>
+                <p class="authors">
+                  Aamir Khan Jadoon^, <b>Chenming Wu^</b>, Yong-Jin Liu, Ying He, and Charlie C.L. Wang
+                </p>
+                <div class="conf">
+                  IEEE Computer Graphics and Applications (CGA), vol.38, no.4, July/August 2018
                 </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/robofdm.png" width="200" height="120" align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> RoboFDM: A Robotic System for Support-free Fabrication using FDM</div>
-              <div class="links">[<a href="https://mewangcl.github.io/pubs/ICRA17RoboFDM.pdf">pdf</a>]</div>
-              <div class="links">[<a href="https://www.youtube.com/watch?v=mrR7lKpHo9k">video</a>]
-                <div class="links">[<a href="https://github.com/chenming-wu/pymdp">code</a>]
-
-                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/robofdm.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> RoboFDM: A Robotic System for Support-free Fabrication using FDM</div>
+                <div class="links">[<a href="https://mewangcl.github.io/pubs/ICRA17RoboFDM.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://www.youtube.com/watch?v=mrR7lKpHo9k">video</a>]</div>
+                <div class="links">[<a href="https://github.com/chenming-wu/pymdp">code</a>]</div>
                 <p class="authors">
                   <b>Chenming Wu^</b>, Chengkai Dai^, Guoxin Fang, Yong-Jin Liu, and Charlie CL Wang
                 </p>
                 <div class="conf">
                   IEEE International Conference on Robotics and Automation (ICRA), 2017
-                  <div>
-                  </div>
                 </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/tase_dlp.png" width="200" height="120" align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Delta DLP 3-D Printing of Large Models</div>
-              <div class="links">[<a href="https://mewangcl.github.io/pubs/TASEDeltaDLP3DPrinting.pdf">pdf</a>]</div>
-              <p class="authors">
-                Ran Yi^, <b>Chenming Wu^</b>, Yong-Jin Liu, Ying He, and Charlie CL Wang
-              </p>
-              <div class="conf">
-                IEEE Transactions on Automation Science and Engineering (TASE), 2017
-                <div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/tase_dlp.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Delta DLP 3-D Printing of Large Models</div>
+                <div class="links">[<a href="https://mewangcl.github.io/pubs/TASEDeltaDLP3DPrinting.pdf">pdf</a>]</div>
+                <p class="authors">
+                  Ran Yi^, <b>Chenming Wu^</b>, Yong-Jin Liu, Ying He, and Charlie CL Wang
+                </p>
+                <div class="conf">
+                  IEEE Transactions on Automation Science and Engineering (TASE), 2017
                 </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td width="200"><img class="icon" src="./static_files/iros_dlp.png" width="200" height="120" align="left">
-            </td>
-            <td align="left" valign="top">
-              <br>
-              <div class="pub_title"> Delta DLP 3D Printing with Large Size</div>
-              <div class="links">[<a href="https://mewangcl.github.io/pubs/IROS16Delta3DPrinter.pdf">pdf</a>]</div>
-              <p class="authors">
-                <b>Chenming Wu^</b>, Ran Yi^, Yong-Jin Liu, Ying He, and Charlie CL Wang
-              </p>
-              <div class="conf">
-                IEEE International Conference on Intelligent Robots and Systems (IROS), 2016
-                <div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/iros_dlp.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Delta DLP 3D Printing with Large Size</div>
+                <div class="links">[<a href="https://mewangcl.github.io/pubs/IROS16Delta3DPrinter.pdf">pdf</a>]</div>
+                <p class="authors">
+                  <b>Chenming Wu^</b>, Ran Yi^, Yong-Jin Liu, Ying He, and Charlie CL Wang
+                </p>
+                <div class="conf">
+                  IEEE International Conference on Intelligent Robots and Systems (IROS), 2016
                 </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <br>
-      <div class="line"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Vision Learning Publications -->
+      <div id="category-vision" class="category-section">
+        <h3>Vision Learning & 3D Reconstruction</h3>
+        <table width="800" border="0" cellspacing="10" align="center">
+          <tbody>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/gir.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> GIR: 3D Gaussian Inverse Rendering for Relightable Scene Factorization</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2312.05133">pdf</a>]</div>
+                <div class="links">[<a href="https://3dgir.github.io/">project page</a>]</div>
+                <p class="authors">
+                  Yahao Shi, Yanmin Wu, <b>Chenming Wu*</b>, Xing Liu, Chen Zhao, Haocheng Feng, Jian Zhang, Bin Zhou, Errui Ding, Jingdong Wang
+                </p>
+                <div class="conf">
+                  IEEE Transactions on Pattern Analysis and Machine Intelligence (PAMI), 2025
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/TexGaussian.jpg" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> TexGaussian: Generating High-quality PBR Material via Octree-based 3D Gaussian Splatting</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2411.19654">pdf</a>]</div>
+                <div class="links">[<a href="https://3d-aigc.github.io/TexGaussian/">project page</a>]</div>
+                <p class="authors">
+                  Bojun Xiong, Jialun Liu, Jiakui Hu, <b>Chenming Wu</b>, Jinbo Wu, Xing Liu, Chen Zhao, Errui Ding, Zhouhui Lian 
+                </p>
+                <div class="conf">
+                  IEEE/CVF International Conference on Computer Vision and Pattern Recognition (CVPR), 2025
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/splatter360.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Splatter-360: Generalizable 360 Gaussian Splatting for Wide-baseline Panoramic Images</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2412.06250">pdf</a>]</div>
+                <div class="links">[<a href="https://3d-aigc.github.io/Splatter-360/">project page</a>]</div>
+                <p class="authors">
+                  Zheng Chen^, <b>Chenming Wu</b>^, Zhelun Shen, Chen Zhao, Weicai Ye, Haocheng Feng, Errui Ding, Song-Hai Zhang 
+                </p>
+                <div class="conf">
+                  IEEE/CVF International Conference on Computer Vision and Pattern Recognition (CVPR), 2025
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/xld.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> XLD: A Cross-Lane Dataset for Benchmarking Novel Driving View Synthesis</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2406.18360">pdf</a>]</div>
+                <div class="links">[<a href="https://3d-aigc.github.io/XLD/">project page</a>]</div>
+                <div class="links">[<a href="https://github.com/lifuguan/XLD_code">code</a>]</div>
+                <p class="authors">
+                  Hao Li^, <b>Chenming Wu^</b>, Ming Yuan, Yan Zhang, Chen Zhao, Chunyu Song, Haocheng Feng, Errui Ding, Dingwen Zhang, Jingdong Wang
+                </p>
+                <div class="conf">
+                  International Conference on 3D Vision (3DV), 2025
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/paralane.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Para-Lane: Multi-Lane Dataset Registering Parallel Scans for Benchmarking Novel View Synthesis</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2406.18360">pdf</a>]</div>
+                <div class="links">[<a href="https://nizqleo.github.io/paralane-dataset/">project page</a>]</div>
+                <p class="authors">
+                  Ziqian Ni, Sicong Du, Zhenghua Hou, <b>Chenming Wu</b>, Sheng Yang
+                </p>
+                <div class="conf">
+                  International Conference on 3D Vision (3DV), 2025
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/neus-pir.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> NeuS-PIR: Learning Relightable Neural Surface using Pre-Integrated Rendering</div>
+                <div class="links">[<a href="http://arxiv.org/pdf/2306.07632.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://github.com/Sheldonmao/NeuSPIR">code</a>]</div>
+                <p class="authors">
+                  Shi Mao, <b>Chenming Wu*</b>, Zhelun Shen, Yifan Wang, Dayan Wu, Liangjun Zhang
+                </p>
+                <div class="conf">
+                  Journal of Computational Visual Media (CVM), 2025
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/opengaussian.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> OpenGaussian: Towards Point-Level 3D Gaussian-based Open Vocabulary Understanding</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2406.02058">pdf</a>]</div>
+                <div class="links">[<a href="https://3d-aigc.github.io/OpenGaussian">project page</a>]</div>
+                <div class="links">[<a href="https://github.com/yanmin-wu/OpenGaussian">code</a>]</div>
+                <p class="authors">
+                  Yanmin Wu, Jiarui Meng, Haijie Li, <b>Chenming Wu*</b>, Yahao Shi, Xinhua Cheng, Chen Zhao, Haocheng Feng, Errui Ding, Jingdong Wang, Jian Zhang
+                </p>
+                <div class="conf">
+                  Advances in Neural Information Processing Systems (NeurIPS), 2024
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/iclr_icl_rep.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Understanding In-Context Learning from Repetitions</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2310.00297.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://github.com/ElliottYan/understand-icl-from-repetition">code</a>]</div>
+                <p class="authors">
+                  Jianhao Yan, Jin Xu, Chiyu Song, <b>Chenming Wu</b>, Yafu Li, and Yue Zhang
+                </p>
+                <div class="conf">
+                  International Conference on Learning Representations (ICLR), 2024
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/ggrt.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> GGRt: Towards Pose-free Generalizable 3D Gaussian Splatting in Real-time</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2403.10147.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://3d-aigc.github.io/GGRt/">project page</a>]</div>
+                <div class="links">[<a href="https://github.com/lifuguan/GGRt_official">code</a>]</div>
+                <p class="authors">
+                  Hao Li^, Yuanyuan Gao^, <b>Chenming Wu^</b>, Dingwen Zhang, Yalun Dai, Chen Zhao, Haocheng Feng, Errui Ding, Jingdong Wang, Junwei Han
+                </p>
+                <div class="conf">
+                  European Conference on Computer Vision (ECCV), 2024
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/ho-gaussian.jpg" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> HO-Gaussian: Hybrid Optimization of 3D Gaussian Splatting for Urban Scenes</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2403.20032.pdf">pdf</a>]</div>
+                <p class="authors">
+                  Zhuopeng Li, Yilin Zhang, <b>Chenming Wu</b>, Jianke Zhu, Liangjun Zhang
+                </p>
+                <div class="conf">
+                  European Conference on Computer Vision (ECCV), 2024
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/dgnr_2024.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> DGNR: Density-Guided Neural Point Rendering of Large Driving Scenes</div>
+                <div class="links">[<a href="http://arxiv.org/pdf/2311.16664.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://github.com/JOP-Lee/DGNR-Rendering">code</a>]</div>
+                <p class="authors">
+                  Zhuopeng Li, <b>Chenming Wu*</b>, Liangjun Zhang, and Jianke Zhu
+                </p>
+                <div class="conf">
+                  IEEE Transactions on Automation Science and Engineering (TASE), 2024
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/texoct.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> TexOct: Generating Textures of 3D Models with Octree-based Diffusion</div>
+                <div class="links">[<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Liu_TexOct_Generating_Textures_of_3D_Models_with_Octree-based_Diffusion_CVPR_2024_paper.pdf">pdf</a>]</div>
+                <p class="authors">
+                  Jialun Liu, <b>Chenming Wu*</b>, Xinqi Liu, Xing Liu, Jinbo Wu, Haotian Peng, Chen Zhao, Haocheng Feng, Jingtuo Liu, Errui Ding
+                </p>
+                <div class="conf">
+                  IEEE/CVF International Conference on Computer Vision and Pattern Recognition (CVPR), 2024
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/matsparse3d.jpg" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Generating Material-Aware 3D Models from Sparse Views</div>
+                <div class="links">[<a href="https://openaccess.thecvf.com/content/CVPR2024W/PBDL/papers/Mao_Generating_Material-Aware_3D_Models_from_Sparse_Views_CVPRW_2024_paper.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://github.com/Sheldonmao/MatSparse3D">code</a>]</div>
+                <p class="authors">
+                  Shi Mao, <b>Chenming Wu</b>, Ran Yi, Zhelun Shen, Liangjun Zhang, Wolfgang Heidrich
+                </p>
+                <div class="conf">
+                  IEEE/CVF International Conference on Computer Vision and Pattern Recognition (CVPR) Workshop PBDL, 2024
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/outdoor-nerf-depth.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Digging into Depth Priors for Outdoor Neural Radiance Fields</div>
+                <div class="links">[<a href="https://cwchenwang.github.io/outdoor-nerf-depth/data/paper.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://cwchenwang.github.io/outdoor-nerf-depth/">project page</a>]</div>
+                <div class="links">[<a href="https://github.com/cwchenwang/outdoor-nerf-depth">code</a>]</div>
+                <p class="authors">
+                  Chen Wang, Jiadai Sun, Lina Liu, <b>Chenming Wu*</b>, Zhelun Shen*, Dayan Wu, Yuchao Dai, Liangjun Zhang
+                </p>
+                <div class="conf">
+                  ACM International Conference on Multimedia (MM, Oral), 2023
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/emnlp22.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Digging Errors in NMT: Evaluating and Understanding Model Errors from Partial Hypothesis Space</div>
+                <div class="links">[<a href="https://aclanthology.org/2022.emnlp-main.827.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://github.com/ElliottYan/digging_errors_nmt">code</a>]</div>
+                <p class="authors">
+                  Jianhao Yan^, <b>Chenming Wu^</b>, Fandong Meng, and Jie Zhou
+                </p>
+                <div class="conf">
+                  Empirical Methods in Natural Language Processing (EMNLP), 2022
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Robotics Publications -->
+      <div id="category-robotics" class="category-section">
+        <h3>Robotics & Autonomous Systems</h3>
+        <table width="800" border="0" cellspacing="10" align="center">
+          <tbody>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/vdg.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> VDG: Vision-Only Dynamic Gaussian for Driving Simulation</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2406.18198">pdf</a>]</div>
+                <div class="links">[<a href="https://3d-aigc.github.io/VDG/">project page</a>]</div>
+                <p class="authors">
+                  Hao Li, Jingfeng Li, Dingwen Zhang, <b>Chenming Wu*</b>, Jieqi Shi, Chen Zhao, Haocheng Feng, Errui Ding, Jingdong Wang, Junwei Han
+                </p>
+                <div class="conf">
+                  IEEE Robotics and Automation Letters (RA-L), 2025
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/gaussian-lic.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Gaussian-LIC: Real-Time Photo-Realistic SLAM with Gaussian Splatting and LiDAR-Inertial-Camera Fusion</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2404.06926">pdf</a>]</div>
+                <div class="links">[<a href="https://xingxingzuo.github.io/gaussian_lic/">project page</a>]</div>
+                <p class="authors">
+                  Xiaolei Lang, Laijian Li, <b>Chenming Wu</b>, Chen Zhao, Lina Liu, Yong Liu, Jiajun Lv, Xingxing Zuo
+                </p>
+                <div class="conf">
+                  IEEE International Conference on Robotics and Automation (ICRA), 2025
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/gauloc.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title">GauLoc: 3D Gaussian Splatting‐based Camera Relocalization</div>
+                <div class="links">[<a href="http://chenming-wu.github.io/pdfs/gauloc_cgf.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://github.com/xinzhe11/GauLoc">code</a>]</div>
+                <p class="authors">
+                  Zhe Xin, Chengkai Dai, Ying Li, <b>Chenming Wu*</b>
+                </p>
+                <div class="conf">
+                  Computer Graphics Forum (CGF), 2024
+                </div>
+              </td>
+            </tr>
+
+
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/icra-lidarcs.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> LiDAR-CS Dataset: LiDAR Point Cloud Dataset with Cross-Sensors for 3D Object Detection</div>
+                <div class="links">[<a href="https://opendriving.github.io/lidar-cs/data/paper.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://opendriving.github.io/lidar-cs">project page</a>]</div>
+                <p class="authors">
+                  Jin Fang, Dingfu Zhou, Jingjing Zhao, <b>Chenming Wu</b>, Chulin Tang, Cheng-Zhong Xu, Liangjun Zhang
+                </p>
+                <div class="conf">
+                  IEEE International Conference on Robotics and Automation (ICRA), 2024
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/icra_hero_slam.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> HERO-SLAM: Hybrid Enhanced Robust Optimization of Neural SLAM</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2407.18813">pdf</a>]</div>
+                <div class="links">[<a href="https://hero-slam.github.io">project page</a>]</div>
+                <div class="links">[<a href="https://github.com/hero-slam/HERO-SLAM">code</a>]</div>
+                <p class="authors">
+                  Zhe Xin, Yufeng Yue, Liangjun Zhang, <b>Chenming Wu*</b>
+                </p>
+                <div class="conf">
+                  IEEE International Conference on Robotics and Automation (ICRA), 2024
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/iros24.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> HPHS: Hierarchical Planning based on Hybrid Frontier Sampling for Unknown Environments Exploration</div>
+                <div class="links">[<a href="https://arxiv.org/pdf/2407.10660">pdf</a>]</div>
+                <div class="links">[<a href="https://github.com/bit-lsj/HPHS">code</a>]</div>
+                <p class="authors">
+                  Shijun Long, Ying Li, <b>Chenming Wu</b>, Bin Xu, Wei Fan
+                </p>
+                <div class="conf">
+                  IEEE International Conference on Intelligent Robots and Systems (IROS), 2024
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/iros_mapnerf.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> MapNeRF: Incorporating Map Priors into Neural Radiance Fields for Driving View Simulation</div>
+                <div class="links">[<a href="http://arxiv.org/pdf/2307.14981.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://youtu.be/jEQWr-Rfh3A">video</a>]</div>
+                <p class="authors">
+                  <b>Chenming Wu</b>, Jiadai Sun, Zhelun Shen, and Liangjun Zhang
+                </p>
+                <div class="conf">
+                  IEEE International Conference on Intelligent Robots and Systems (IROS), 2023
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/iros_irl.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Boosting Feedback Efficiency of Interactive Reinforcement Learning by Adaptive Learning from Scores</div>
+                <div class="links">[<a href="http://arxiv.org/pdf/2307.05405.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://github.com/SSKKai/Interactive-Scoring-IRL">code</a>]</div>
+                <p class="authors">
+                  Shukai Liu, <b>Chenming Wu*</b>, Ying Li, and Liangjun Zhang
+                </p>
+                <div class="conf">
+                  IEEE International Conference on Intelligent Robots and Systems (IROS), 2023
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/bioprinting.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> A Multi-Axis Robot-based Bioprinting System Supporting Natural Cell Function Preservation and Cardiac Tissue Fabrication</div>
+                <div class="links">[<a href="https://www.sciencedirect.com/science/article/pii/S2452199X22000743">pdf</a>]</div>
+                <div class="links">[<a href="https://www.youtube.com/watch?v=ymoosfEH0aw&feature=youtu.be">video</a>]</div>
+                <p class="authors">
+                  Zeyu Zhang^, <b>Chenming Wu^</b>, Chengkai Dai^, Qingqing Shi^, Guoxin Fang, Dongfang Xie, Xiangjie Zhao, Yong-Jin Liu, and Charlie CL Wang, Xiu-Jie Wang
+                </p>
+                <div class="conf">
+                  Bioactive Materials (Winner of the MEDTECH prize 2022), 2022
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/ral_multiarm.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Plant Phenotyping by Deep-Learning-Based Planner for Multi-Robots</div>
+                <div class="links">[<a href="https://cg.cs.tsinghua.edu.cn/papers/IEEERAL-2019-plant.pdf">pdf</a>]</div>
+                <div class="links">[<a href="https://www.youtube.com/watch?v=XusxgEczHrQ">video</a>]</div>
+                <p class="authors">
+                  <b>Chenming Wu</b>, Rui Zeng, Jia Pan, Charlie CL Wang, Yong-Jin Liu
+                </p>
+                <div class="conf">
+                  IEEE Robotics and Automation Letters (RA-L), 2019
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="200"><img class="icon" src="./static_files/ral_energy.png" width="200" height="120" align="left"></td>
+              <td align="left" valign="top">
+                
+                <div class="pub_title"> Energy-Efficient Coverage Path Planning for General Terrain Surfaces</div>
+                <div class="links">[<a href="https://cg.cs.tsinghua.edu.cn/papers/IEEERAL-2019-path.pdf">pdf</a>]</div>
+                <p class="authors">
+                  <b>Chenming Wu</b>, Chengkai Dai, Xiaoxi Gong, Yong-Jin Liu, Jun Wang, Xianfeng David Gu, and Charlie CL Wang
+                </p>
+                <div class="conf">
+                  IEEE Robotics and Automation Letters (RA-L), 2019
+                </div>
+              </td>
+            </tr>
+                     </tbody>
+         </table>
+       </div>
+
+        <p class="subsection">Academic Service</p>
+        <table width="800" border="0" cellspacing="10">
+          <tbody>
+            <tr>
+              <td align="left" valign="top">
+                <br>
+                <div class="pub_title">Area Chair</div>
+                <div class="conf">ACMMM 2025</div>
+                <br>
+                <div class="pub_title">Conference Reviewer</div>
+                <div class="conf">SIGGRAPH (Asia), NeurIPS, ICLR, ICML, ICRA, IROS, CVPR, ICCV, ECCV, AAAI, WACV, ACL, EMNLP, 3DV, ACM MM, etc.</div>
+                <br>
+                <div class="pub_title">Journal Reviewer</div>
+                <div class="conf">IEEE Transactions on Robotics, IEEE Transactions on Automation Science and Engineering, Computer & Graphics, Additive Manufacturing, Pattern Recognition, Neural Networks, etc.</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> <br>
+     </div>
+    
     </div>
-    <div id="Group">
-      <p class="subsection">Academic Service</p>
-      <b>Area Chair: </b> ACMMM 2025 <br>
-      <b>Conference Reviewer: </b>SIGGRAPH (Asia), NeurIPS, ICLR, ICML, ICRA, IROS, CVPR, ICCV, ECCV, WACV, ACL,
-      EMNLP,
-      3DV, ACM MM, etc.
-      <br>
-      <b>Journal Reviewer: </b> IEEE Transactions on Robotics, Computer & Graphics, AM, etc. <br>
-    </div> <br>
+   
     <div style="text-align: center;">
       <a href="https://mapmyvisitors.com/web/1bw1d" title="Visit tracker"><img
           src="https://mapmyvisitors.com/map.png?d=y6fBVRGrxfKI0kVydJUHRp_fwt4gsXZNfst2K7Ppwjk&cl=ffffff" /></a>
 
-    </div>
   </div>
+  
+  
+  <script>
+    function toggleCategory(category) {
+      // Hide all category sections
+      const sections = document.querySelectorAll('.category-section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Remove active class from all buttons
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Show selected category section
+      const selectedSection = document.getElementById('category-' + category);
+      if (selectedSection) {
+        selectedSection.classList.add('active');
+      }
+      
+      // Add active class to selected button
+      const selectedButton = document.getElementById('btn-' + category);
+      if (selectedButton) {
+        selectedButton.classList.add('active');
+      }
+    }
+    
+    // Initialize with Recent category active
+    window.onload = function() {
+      toggleCategory('recent');
+    };
+  </script>
 </body>
 
 </html>
