@@ -73,7 +73,7 @@ a:hover { color: #e86e14; }
   background-color: #eee; -webkit-box-shadow: 0px 0 20px #aaa; -moz-box-shadow: 0px 0 10px #aaa; box-shadow: 2px 2px 10px 1px ThreeDShadow; 
 }
 .conf{
-  font-size:14px;
+  font-size:12px;
 }
 
 .pub img {
@@ -82,7 +82,7 @@ a:hover { color: #e86e14; }
   float:left;
 }
 .pub_title {
-  font-size:14px;
+  font-size:12px;
   font-weight:bold;
   display:inline;
   color: #7D0B39;
@@ -93,11 +93,11 @@ a:hover { color: #e86e14; }
 }
 
 .links{
-  font-size:14px;
+  font-size:12px;
   display:inline;
 }
 .authors{
-  font-size:12px;
+  font-size:10px;
 }
 
 .new{
