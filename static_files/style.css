@@ -107,6 +107,9 @@ a:hover { color: #e86e14; }
 .title{
         font-size:20px;
 }
+.red-text {
+    color: red;
+}
 .authors{}
 .author{
   display:inline;
